@@ -4,7 +4,7 @@
   const nav = document.querySelector('#navigation');
   const toggle = document.querySelector('.menu-toggle');
   let language = 'uk';
-  const names = {elite:'Elite Code',safeway:'SafeWay UA',maison:'Maison',target:'TARGET'};
+  const names = {mare:'MARE',safeway:'SafeWay UA',maison:'Maison',target:'TARGET'};
   const labels = {
     uk: {nav:'Головна навігація',language:'Мова',viewwork:'Переглянути роботи',open:'Відкрити меню',close:'Закрити меню'},
     en: {nav:'Main navigation',language:'Language',viewwork:'View our work',open:'Open menu',close:'Close menu'}

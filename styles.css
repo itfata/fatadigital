@@ -65,12 +65,12 @@ a:focus-visible,button:focus-visible{outline:3px solid #2571be;outline-offset:6p
 .section-heading>p{max-width:285px;font-size:14px}
 .project-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:5%;row-gap:56px;align-items:start}
 .project-safeway{margin-top:150px}
-.project-nexora{max-width:100%}
-.project-aurelis{margin-top:100px}
+.project-maison{max-width:100%}
+.project-target{margin-top:100px}
 .project-image{display:block;position:relative;padding:28px 24px;background:#dddfd6;overflow:hidden}
 .project-safeway .project-image{background:#dce7ed}
-.project-nexora .project-image{background:#d5d4e1}
-.project-aurelis .project-image{background:#d9dedf}
+.project-maison .project-image{background:#d5d4e1}
+.project-target .project-image{background:#d9dedf}
 .project-image img{aspect-ratio:1.44;object-fit:cover;transition:transform .45s}
 .project-browser{height:19px;background:#f3f4f1;display:flex;align-items:center;padding:0 8px;gap:3px}
 .project-browser i{width:3px;height:3px;background:#a6aaa3;border-radius:50%}
@@ -239,8 +239,8 @@ h2{font-size:38px}
 .project-meta h3{font-size:25px}
 .project-service{font-size:11px;margin:8px 0 0}
 .project-description{font-size:14px;line-height:1.65;margin-top:10px}
-.project-nexora,.project-aurelis{width:100%}
-.project-aurelis{margin-left:auto}
+.project-maison,.project-target{width:100%}
+.project-target{margin-left:auto}
 .studio-intro{gap:24px}
 .large-copy,.studio .large-copy{font-size:16px}
 .values{grid-template-columns:1fr;gap:27px;margin-top:40px}

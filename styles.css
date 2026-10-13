@@ -98,6 +98,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #2571be;outline-offset:6p
 .feature{display:grid;grid-template-columns:1fr 1.2fr;gap:8%;align-items:center;border-bottom:1px solid #cbd0c8}
 .feature h2{margin:24px 0}
 .feature-copy>p:not(.eyebrow){font-size:15px;max-width:400px}
+.feature-copy>p+p{margin-top:16px}
 .feature .text-link{margin-top:25px}
 .feature-visual{background:#dde0d5;padding:35px 0 35px 35px;overflow:hidden}
 .feature-visual img{max-width:none;width:125%;box-shadow:0 15px 25px #2222}

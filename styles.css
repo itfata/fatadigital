@@ -346,7 +346,7 @@ to{opacity:1;transform:none}
 }
 
 
-.price-list .price-store strong{white-space:normal;overflow-wrap:normal}
+.price-list .price-store strong{white-space:normal;overflow-wrap:normal;font-size:18px}
 @media(min-width:801px){.price-list .price-store{grid-template-columns:40px minmax(0,1fr) 165px 200px}}
 @media(min-width:801px) and (max-width:1150px){.price-list .price-store{grid-template-columns:30px minmax(0,1fr) 150px 185px}}
 @media(min-width:561px) and (max-width:800px){.price-list .price-store{grid-template-columns:30px minmax(0,1fr) 165px}}

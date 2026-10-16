@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /qa/
+Disallow: /tools/
 Sitemap: https://fatadigital.online/sitemap.xml

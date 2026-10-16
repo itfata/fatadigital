@@ -25,8 +25,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #2571be;outline-offset:6p
 .header nav a:hover:after{width:100%}
 .header-tools{display:flex;align-items:center;gap:27px}
 .languages{display:flex;align-items:center;gap:4px;font-size:12px}
-.languages button{border:0;background:none;min-width:36px;min-height:44px;padding:5px;color:#59635b}
-.languages button[aria-pressed=true]{color:#202522;text-decoration:underline;text-underline-offset:5px;font-weight:800}
+.languages button,.languages a{border:0;background:none;min-width:36px;min-height:44px;padding:5px;color:#59635b}
+.languages button[aria-pressed=true],.languages a[aria-current=page]{color:#202522;text-decoration:underline;text-underline-offset:5px;font-weight:800}
 .button{display:inline-flex;align-items:center;justify-content:space-between;gap:30px;padding:17px 23px;min-height:54px;background:#c1def6;border:1px solid transparent;font-size:13px;font-weight:700;transition:background .2s,transform .2s}
 .button:hover{background:#a9cfee;transform:translateY(-2px)}
 .button span:last-child{font-size:20px;line-height:1}
@@ -350,3 +350,33 @@ to{opacity:1;transform:none}
 @media(min-width:801px){.price-list .price-store{grid-template-columns:40px minmax(0,1fr) 165px 200px}}
 @media(min-width:801px) and (max-width:1150px){.price-list .price-store{grid-template-columns:30px minmax(0,1fr) 150px 185px}}
 @media(min-width:561px) and (max-width:800px){.price-list .price-store{grid-template-columns:30px minmax(0,1fr) 165px}}
+
+/* Local preview additions: native controls, no animation or library dependency. */
+.preview-banner{padding:8px 6%;background:#202822;color:#f4f4ef;text-align:center;font-size:12px;line-height:1.6}
+.section-cta{margin-top:48px;padding-top:28px;border-top:1px solid #bdc4b9;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.section-cta p{font-size:21px;line-height:1.4;color:#202522;max-width:620px}
+.section-cta .button{flex-shrink:0}
+.services>.section-cta{grid-column:1/-1;margin-top:0}
+.faq-list{border-top:1px solid #bdc4b9}
+.faq-list details{border-bottom:1px solid #bdc4b9}
+.faq-list summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:25px;cursor:pointer;font-size:22px;line-height:1.4;padding:25px 0;min-height:64px}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary:after{content:'+';font-size:28px;font-weight:400;flex-shrink:0}
+.faq-list details[open] summary:after{content:'−'}
+.faq-list details>p{max-width:800px;padding:0 38px 28px 0;font-size:16px;line-height:1.8}
+summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #2571be;outline-offset:4px}
+.external-note{font-size:12px;color:#304d63;max-width:650px;margin-top:28px}
+.legal-links{display:flex;flex-wrap:wrap;gap:10px 25px;border-top:1px solid #cbd0c8;margin-top:20px;padding-top:20px;font-size:12px;color:#525d54}
+.legal-links a{padding:8px 0;text-decoration:underline;text-underline-offset:4px}
+.legal-document{max-width:1050px}.legal-document h1{font-size:clamp(38px,6vw,72px);margin:24px 0;overflow-wrap:anywhere}
+.legal-document h2{font-size:28px;margin:36px 0 18px}.legal-document p{max-width:780px}
+.legal-document .text-link{margin-top:36px}.draft-badge{color:#81511e}.legal-intro{padding:20px;border-left:3px solid #94703e;background:#eee8db}
+@media(max-width:800px){.section-cta{align-items:flex-start;flex-direction:column}.faq-list summary{font-size:20px}}
+@media(max-width:560px){.faq-list summary{font-size:18px;padding:20px 0}.faq-list details>p{font-size:14px}.section-cta p{font-size:19px}.legal-links{gap:8px 18px}.preview-banner{font-size:11px}}
+
+.languages a{display:inline-flex;align-items:center;justify-content:center}
+
+.skip:not(:focus){clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+@media(max-width:800px){.header nav{top:var(--menu-top,86px)}}
+
+.formats{padding-top:0}.format-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.format-grid article{border:1px solid #bdc4b9;padding:28px;display:flex;flex-direction:column;align-items:flex-start;gap:20px}.format-grid p{font-size:14px}.format-grid strong{font-size:22px;line-height:1.4;font-weight:500;margin-top:auto}.format-grid .text-link{font-size:13px}.support{display:flex;gap:40px;align-items:center;justify-content:space-between}.support>div{max-width:750px}.support h2{font-size:clamp(32px,4vw,48px)}.support p{margin-top:24px}.support .button{flex-shrink:0}@media(max-width:800px){.format-grid{grid-template-columns:1fr}.support{align-items:flex-start;flex-direction:column}}

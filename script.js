@@ -70,3 +70,17 @@
   setLanguage(document.documentElement.lang,false);
   document.querySelector('#year').textContent = new Date().getFullYear();
 })();
+
+// Two equal groups keep the moving testimonials seamless at the loop boundary.
+(() => {
+  const section = document.querySelector('.reviews');
+  if (!section) return;
+  const track = section.querySelector('.reviews-track');
+  const group = section.querySelector('.reviews-group');
+  const clone = group.cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true');
+  clone.inert = true;
+  track.append(clone);
+  section.classList.add('is-ready');
+
+})();

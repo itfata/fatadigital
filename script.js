@@ -71,16 +71,134 @@
   document.querySelector('#year').textContent = new Date().getFullYear();
 })();
 
-// Two equal groups keep the moving testimonials seamless at the loop boundary.
+// Equal groups keep the moving testimonials seamless; full reviews open in a dialog.
 (() => {
   const section = document.querySelector('.reviews');
   if (!section) return;
   const track = section.querySelector('.reviews-track');
   const group = section.querySelector('.reviews-group');
+  const viewport = section.querySelector('.reviews-viewport');
+  const cards = [...group.querySelectorAll('.review-card')];
+  const copy = window.FATA_TRANSLATIONS[document.documentElement.lang];
+  const supportsDialog = typeof HTMLDialogElement !== 'undefined' && HTMLDialogElement.prototype.showModal;
+  if (supportsDialog) {
+    const dialog = document.createElement('dialog');
+    dialog.className = 'review-dialog';
+    dialog.setAttribute('aria-labelledby', 'review-dialog-title');
+    const close = document.createElement('button');
+    close.type = 'button'; close.className = 'review-dialog-close';
+    close.setAttribute('aria-label', copy.reviewclose); close.textContent = '×';
+    const country = document.createElement('p'); country.className = 'eyebrow';
+    const title = document.createElement('h2'); title.id = 'review-dialog-title';
+    const text = document.createElement('p'); text.className = 'review-dialog-text';
+    dialog.append(close, country, title, text); document.body.append(dialog);
+    cards.forEach((card, index) => {
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = 'review-read-more';
+      button.dataset.review = String(index); button.textContent = copy.reviewreadmore;
+      button.setAttribute('aria-haspopup', 'dialog');
+      card.insertBefore(button, card.querySelector('.review-source'));
+    });
+    section.classList.add('has-review-dialog');
+    section.addEventListener('click', event => {
+      const button = event.target.closest('.review-read-more');
+      if (!button) return;
+      const card = cards[Number(button.dataset.review)];
+      title.textContent = card.querySelector('.review-card-top .eyebrow').textContent;
+      country.textContent = card.querySelector('.review-source').textContent;
+      text.textContent = card.querySelector('.review-copy').textContent;
+      dialog.showModal(); dialog.scrollTop = 0;
+      document.body.classList.add('review-dialog-open');
+    });
+    close.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+      document.body.classList.remove('review-dialog-open');
+      viewport.focus({preventScroll:true});
+    });
+  }
   const clone = group.cloneNode(true);
   clone.setAttribute('aria-hidden', 'true');
-  clone.inert = true;
+  // Visual copies also open reviews with a pointer; keyboard users visit each original once.
+  clone.querySelectorAll('button').forEach(button => button.tabIndex = -1);
+  clone.addEventListener('pointerdown', event => {
+    if (event.target.closest('button')) event.preventDefault();
+  });
   track.append(clone);
   section.classList.add('is-ready');
+})();
 
+// One-time scroll reveals. Content remains visible without JS or animation support.
+(() => {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reducedMotion.matches || !('IntersectionObserver' in window) || !Element.prototype.animate) return;
+  const selectors = [
+    '.section-heading', '.project', '.studio-intro > *', '.values article',
+    '.feature-copy', '.feature-visual', '.process-list article',
+    '.services-intro', '.services-list article', '.section-cta',
+    '.reviews-viewport', '.faq-list details', '.contact > .eyebrow',
+    '.contact-grid > *', '.footer-top', '.footer-bottom',
+    '.pricing-hero > *', '.price-section > h2', '.price-list article',
+    '.format-grid article', '.included > *', '.support > *'
+  ].join(',');
+  // Do not fade out anything already visible (including restored scroll positions).
+  const elements = [...document.querySelectorAll(selectors)].filter(element => element.getBoundingClientRect().top >= window.innerHeight);
+  elements.forEach(element => element.classList.add('reveal-pending'));
+  const pending = new Set(elements);
+  const active = new Map();
+  const groupCounts = new Map();
+  const delays = new WeakMap();
+  elements.forEach(element => {
+    const index = groupCounts.get(element.parentElement) || 0;
+    delays.set(element, Math.min(index % 4, 2) * 80);
+    groupCounts.set(element.parentElement, index + 1);
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const element = entry.target;
+      observer.unobserve(element);
+      if (!pending.has(element)) return;
+      pending.delete(element);
+      if (reducedMotion.matches || element.contains(document.activeElement)) {
+        element.classList.remove('reveal-pending');
+        return;
+      }
+      const animation = element.animate([
+        { opacity: 0, transform: `translateY(${window.innerWidth <= 560 ? 28 : 48}px)` },
+        { opacity: 1, transform: 'translateY(0)' }
+      ], {
+        duration: 600, delay: delays.get(element),
+        easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards'
+      });
+      // Start the hidden first frame before releasing the pending style.
+      element.classList.remove('reveal-pending');
+      active.set(element, animation);
+      animation.finished.then(() => active.delete(element), () => active.delete(element));
+    });
+  }, { threshold: 0, rootMargin: '0px' });
+  elements.forEach(element => observer.observe(element));
+  // Focused links and controls are immediately readable and usable.
+  document.addEventListener('focusin', event => {
+    pending.forEach(element => {
+      if (!element.contains(event.target)) return;
+      observer.unobserve(element);
+      element.classList.remove('reveal-pending');
+      pending.delete(element);
+    });
+    active.forEach((animation, element) => { if (element.contains(event.target)) animation.finish(); });
+  });
+  const finishAll = () => {
+    observer.disconnect();
+    pending.forEach(element => element.classList.remove('reveal-pending'));
+    pending.clear();
+    active.forEach(animation => animation.finish());
+    active.clear();
+  };
+  reducedMotion.addEventListener('change', event => { if (event.matches) finishAll(); });
+  window.addEventListener('beforeprint', finishAll);
 })();

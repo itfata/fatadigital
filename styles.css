@@ -406,3 +406,28 @@ summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vi
 .reviews-viewport:focus-visible{outline:3px solid #2571be;outline-offset:4px}
 
 .review-copy{white-space:pre-line;font-size:17px;line-height:1.65}.review-source{margin-top:auto;padding-top:18px;border-top:1px solid #d6ddcf;font-size:11px;color:#606c5b}
+
+/* Only offscreen elements are prepared by JS; no visible-to-hidden flash. */
+.reveal-pending{opacity:0}
+@media(prefers-reduced-motion:reduce){.reveal-pending{opacity:1}}
+@media print{.reveal-pending{opacity:1}}
+
+/* The first screen starts its reveal in CSS, before the first paint. */
+.hero-copy h1,.hero-lead,.hero-actions,.hero-art{animation:hero-intro 700ms cubic-bezier(.22,1,.36,1) backwards}
+.hero-lead{animation-delay:90ms}.hero-actions{animation-delay:180ms}.hero-art{animation-delay:120ms}
+@keyframes hero-intro{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.hero-copy h1,.hero-lead,.hero-actions,.hero-art{animation:none}}
+@media print{.hero-copy h1,.hero-lead,.hero-actions,.hero-art{animation:none}}
+
+.reviews.has-review-dialog .review-card{height:420px;min-height:0}
+.reviews.has-review-dialog .review-copy{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;max-height:8.25em;margin-bottom:14px;flex-shrink:0}
+.review-read-more{align-self:flex-start;border:0;border-bottom:1px solid currentColor;padding:8px 0;min-height:44px;background:none;font-size:13px;font-weight:600;color:#354431}
+.review-dialog{width:calc(100% - 32px);max-width:680px;max-height:calc(100dvh - 40px);margin:auto;padding:48px;border:1px solid #cbd2c6;background:#f8f9f5;color:#202522;overflow:auto;overscroll-behavior:contain}
+.review-dialog::backdrop{background:rgba(20,29,23,.65)}
+.review-dialog h2{font-size:32px;line-height:1.2;margin:15px 0 25px;padding-right:20px}
+.review-dialog .eyebrow{padding-right:40px;color:#53644f}
+.review-dialog-text{white-space:pre-line;font-size:17px;line-height:1.8;color:#354431}
+.review-dialog-close{position:absolute;top:12px;right:12px;width:44px;height:44px;border:1px solid #bdc4b9;background:#f8f9f5;font-size:28px;line-height:1}
+.review-dialog-open{overflow:hidden}
+@media(max-width:560px){.review-dialog{padding:30px 24px}.review-dialog h2{font-size:26px}.review-dialog-text{font-size:16px}}
+@media print{.reviews.has-review-dialog .review-card{height:auto}.reviews.has-review-dialog .review-copy{display:block;max-height:none}.review-read-more{display:none}}

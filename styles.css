@@ -618,3 +618,6 @@ h2{font-weight:300;letter-spacing:-.045em;line-height:1.04}
 
 .rv-logo.has-logo{border:0;width:auto;height:auto}
 .rv-logo img{display:block;height:36px;width:auto;max-width:200px;opacity:.95}
+
+.rv-stage{position:relative;display:block;transition:height .5s ease}
+.rv-slide{position:absolute;left:0;right:0;top:0;grid-area:auto}

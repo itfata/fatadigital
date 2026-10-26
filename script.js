@@ -285,3 +285,14 @@ if(px<0)x.moveTo(px,y);else x.lineTo(px,y)}
 x.strokeStyle='rgba('+(102+Math.round(k*-65))+','+(156+Math.round(k*-43))+','+(202-Math.round(k*12))+','+(.12+.38*Math.sin(k*Math.PI))+')';x.lineWidth=1;x.stroke()}
 if(!still){t+=.012;requestAnimationFrame(draw)}}
 draw()})();
+
+(function(){var sec=document.querySelector('.feature');var st=document.querySelector('.fv-stack');if(!sec||!st)return;
+var imgs=[].slice.call(st.querySelectorAll('img')),dots=[].slice.call(document.querySelectorAll('#fv-dots i')),url=document.getElementById('fv-url'),c1=document.getElementById('fv-c1'),c2=document.getElementById('fv-c2');
+var names=['kuro-katana','maison','athletique','target'],cur=-1;
+function L(){return (document.documentElement.lang||'en').slice(0,2)}
+var T={en:['New enquiry via Telegram','Quote request · 2 min ago'],uk:['Нова заявка в Telegram','Запит розрахунку · 2 хв тому']};
+function txt(){var t=T[L()]||T.en;c1.querySelector('span').textContent=t[0];c2.querySelector('span').textContent=t[1]}
+function upd(){var r=sec.getBoundingClientRect(),vh=innerHeight,p=Math.min(1,Math.max(0,(vh*.55-r.top)/(r.height)));var i=Math.min(imgs.length-1,Math.floor(p*imgs.length*1.15));
+if(i!==cur){cur=i;imgs.forEach(function(m,k){m.classList.toggle('on',k===i)});dots.forEach(function(d,k){d.classList.toggle('on',k===i)});url.textContent=names[i]}
+c1.classList.toggle('show',p>.18);c2.classList.toggle('show',p>.55)}
+txt();upd();addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);new MutationObserver(txt).observe(document.documentElement,{attributes:true,attributeFilter:['lang']})})();

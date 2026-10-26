@@ -905,3 +905,5 @@ footer *{color:var(--cream)}
 }
 @media(max-width:800px) and (max-height:820px){.fc-step p+p{display:none}}
 .feature-scroll .fv-sticky{top:auto!important}
+/* mobile menu fix: backdrop-filter made the header a containing block and cut the fixed menu panel to one row */
+.header{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(244,244,239,.97)!important}

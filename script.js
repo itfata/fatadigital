@@ -74,7 +74,7 @@
 // Equal groups keep the moving testimonials seamless; full reviews open in a dialog.
 (() => {
   const section = document.querySelector('.reviews');
-  if (!section) return;
+  if (!section || !section.querySelector('.reviews-group')) return;
   const track = section.querySelector('.reviews-track');
   const group = section.querySelector('.reviews-group');
   const viewport = section.querySelector('.reviews-viewport');
@@ -238,3 +238,23 @@
   });
   document.body.appendChild(box);
 })();
+
+
+(function(){var r=document.getElementById('rv');if(!r)return;var s=[].slice.call(r.querySelectorAll('.rv-slide')),d=[].slice.call(r.querySelectorAll('.rv-dot')),i=0,tm;
+function go(n){i=(n+s.length)%s.length;s.forEach(function(e,k){e.classList.toggle('is-on',k===i)});d.forEach(function(e,k){e.classList.toggle('is-on',k===i)})}
+function auto(){clearInterval(tm);if(!matchMedia('(prefers-reduced-motion:reduce)').matches)tm=setInterval(function(){go(i+1)},9000)}
+r.addEventListener('click',function(e){var b=e.target.closest('[data-d],[data-i].rv-dot');if(!b)return;go(b.hasAttribute('data-d')?i+ +b.getAttribute('data-d'):+b.getAttribute('data-i'));auto()});
+r.addEventListener('mouseenter',function(){clearInterval(tm)});r.addEventListener('mouseleave',auto);auto()})();
+
+
+(function(){var f=document.getElementById('lead-form');if(!f)return;var st=document.getElementById('lead-status'),btn=f.querySelector('button[type=submit]');
+function tr(k){var d=(window.FATA_TRANSLATIONS||{})[document.documentElement.lang]||(window.FATA_TRANSLATIONS||{}).en||{};return d[k]||''}
+f.addEventListener('submit',function(e){e.preventDefault();st.classList.remove('is-error');
+var n=f.name.value.trim(),c=f.contact.value.trim();
+if(!n||!c){st.textContent=tr('formreq');st.classList.add('is-error');return}
+if(f._honey.value)return;
+btn.disabled=true;
+fetch('https://formsubmit.co/ajax/itffata@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({name:n,contact:c,message:f.message.value.trim(),_subject:'New enquiry from fatadigital.online',_template:'table',_captcha:'false',page:location.href})})
+.then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(){st.textContent=tr('formok');f.reset();try{window.gtag&&gtag('event','generate_lead',{method:'form'})}catch(x){}})
+.catch(function(){st.textContent=tr('formerr');st.classList.add('is-error')}).then(function(){btn.disabled=false})});
+document.addEventListener('click',function(e){var a=e.target.closest('a[href*="t.me/"],a[href*="wa.me/"],a[href^="mailto:"]');if(!a)return;try{window.gtag&&gtag('event','contact_click',{method:a.href.indexOf('t.me')>-1?'telegram':a.href.indexOf('wa.me')>-1?'whatsapp':'email'})}catch(x){}})})();

@@ -202,3 +202,39 @@
   reducedMotion.addEventListener('change', event => { if (event.matches) finishAll(); });
   window.addEventListener('beforeprint', finishAll);
 })();
+
+(() => {
+  'use strict';
+  const KEY = 'fata_consent';
+  const text = {
+    en: {label:'Cookie consent', body:'We use cookies to measure how our ads perform. You can accept or decline.', accept:'Accept', decline:'Decline'},
+    uk: {label:'Згода на cookies', body:'Ми використовуємо cookies, щоб вимірювати ефективність реклами. Ви можете погодитися або відмовитися.', accept:'Прийняти', decline:'Відхилити'}
+  };
+  let saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (saved === 'granted' || saved === 'denied') return;
+  const box = document.createElement('div');
+  box.className = 'consent';
+  box.setAttribute('role', 'dialog');
+  box.innerHTML = '<p></p><div class="consent-actions"><button type="button" data-consent="denied"></button><button type="button" data-consent="granted"></button></div>';
+  const paint = () => {
+    const t = text[document.documentElement.lang === 'uk' ? 'uk' : 'en'];
+    box.setAttribute('aria-label', t.label);
+    box.querySelector('p').textContent = t.body;
+    box.querySelector('[data-consent="denied"]').textContent = t.decline;
+    box.querySelector('[data-consent="granted"]').textContent = t.accept;
+  };
+  paint();
+  new MutationObserver(paint).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+  box.addEventListener('click', event => {
+    const button = event.target.closest('button[data-consent]');
+    if (!button) return;
+    const value = button.dataset.consent;
+    try { localStorage.setItem(KEY, value); } catch (e) {}
+    if (value === 'granted' && typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'});
+    }
+    box.remove();
+  });
+  document.body.appendChild(box);
+})();

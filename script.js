@@ -253,5 +253,5 @@ var next=f.querySelector('input[name=_next]');if(next)next.value=location.origin
 if(/[?&]sent=1/.test(location.search)){st.textContent=tr('formok');try{window.gtag&&gtag('event','generate_lead',{method:'form'})}catch(x){}try{history.replaceState(null,'',location.pathname+'#contact')}catch(x){}}
 f.addEventListener('submit',function(e){st.classList.remove('is-error');var n=f.elements.name.value.trim(),c=f.elements.contact.value.trim();
 if(!n||!c){e.preventDefault();st.textContent=tr('formreq');st.classList.add('is-error');return}
-var b=f.querySelector('button[type=submit]');if(b)b.disabled=true});
+var b=f.querySelector('button[type=submit]');if(b){b.disabled=true;var l=b.querySelector('span');if(l)l.textContent=tr('formsending')}st.textContent=tr('formsending')});
 document.addEventListener('click',function(e){var a=e.target.closest('a[href*="t.me/"],a[href*="wa.me/"],a[href^="mailto:"]');if(!a)return;try{window.gtag&&gtag('event','contact_click',{method:a.href.indexOf('t.me')>-1?'telegram':a.href.indexOf('wa.me')>-1?'whatsapp':'email'})}catch(x){}})})();

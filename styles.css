@@ -615,3 +615,6 @@ h2{font-weight:300;letter-spacing:-.045em;line-height:1.04}
 .contact .lead-status{color:#9cc6ee}.contact .lead-status.is-error{color:#f2a69a}
 .contact-tg{display:inline-flex;gap:12px;margin-top:26px;color:#f4f4ef}
 .contact .socials{margin-top:22px}
+
+.rv-logo.has-logo{border:0;width:auto;height:auto}
+.rv-logo img{display:block;height:36px;width:auto;max-width:200px;opacity:.95}

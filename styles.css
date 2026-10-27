@@ -956,3 +956,31 @@ h2{font-weight:600;letter-spacing:-.045em}
 .feature-scroll .feature-copy h2{font-weight:600}
 }
 .fc-step p,.feature-scroll .feature-copy>p:not(.eyebrow),.founder .large-copy{color:#3d453e}
+
+/* process / faq / contact upgrade (improve-trust) */
+.process .process-list p{font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:#d9ded6}
+.process .section-heading>p{font-size:clamp(16px,1.3vw,18px);color:#d9ded6;line-height:1.6}
+.faq .section-heading>p{font-size:clamp(16px,1.3vw,18px);color:#3d453e;line-height:1.6}
+.faq-list details>p{font-size:clamp(16px,1.3vw,18px);line-height:1.75;color:#3d453e}
+.faq-list details[open]>p{animation:faqIn .4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes faqIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.faq-list details[open]>p{animation:none}}
+.contact-left{display:grid;gap:clamp(36px,5vw,72px);align-content:start}
+.contact-direct{display:grid;border-top:1px solid rgba(244,244,239,.22);max-width:620px}
+.contact-direct a{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid rgba(244,244,239,.22);color:#f4f4ef;text-decoration:none;transition:padding .35s,color .3s}
+.contact-direct span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#9fb0a2}
+.contact-direct b{font-size:clamp(18px,1.7vw,24px);font-weight:600;letter-spacing:-.02em;min-width:0;overflow-wrap:anywhere}
+.contact-direct i{font-style:normal;font-size:20px;color:#9cc6ee;transition:transform .3s}
+.contact-direct a:hover{padding-left:14px;color:#9cc6ee}
+.contact-direct a:hover i{transform:translate(3px,-3px)}
+.contact .lead-title{font-size:15px;color:#c9cec7;margin-bottom:4px}
+.contact .lead-form{gap:20px;max-width:560px}
+.contact .lead-row{gap:10px}
+.contact .lead-row label{font-size:14px;letter-spacing:.02em;color:#e6eae3;font-weight:500}
+.contact .lead-row input,.contact .lead-row textarea{background:rgba(244,244,239,.07);border:1px solid rgba(244,244,239,.3);border-radius:14px;padding:16px 18px;font-size:17px;transition:border-color .25s,background .25s,box-shadow .25s}
+.contact .lead-row input:hover,.contact .lead-row textarea:hover{border-color:rgba(244,244,239,.55)}
+.contact .lead-row input:focus,.contact .lead-row textarea:focus{border-color:#9cc6ee;background:rgba(156,198,238,.1);box-shadow:0 0 0 4px rgba(156,198,238,.18)}
+.contact .lead-form .button{padding:22px 30px;font-weight:700;margin-top:8px}
+.contact .lead-note{font-size:14px;color:#b4bdb5}
+.contact-grid>div:not(.contact-left)>p{font-size:clamp(16px,1.3vw,18px);color:#e6eae3;line-height:1.65}
+@media(max-width:800px){.contact-direct a{grid-template-columns:100px 1fr auto;padding:18px 0}}

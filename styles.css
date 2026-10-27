@@ -933,3 +933,4 @@ footer *{color:var(--cream)}
 .hero-bottom p{color:#d4d9d1;font-weight:600;letter-spacing:.14em}
 @media(max-width:800px){.hero-copy h1{letter-spacing:-.035em;line-height:1.1}}
 @media(max-width:600px){.hero-copy{min-width:0}.hero-copy h1{font-size:clamp(33px,9.4vw,52px);line-height:1.1}.hero-copy h1>span{white-space:normal}.hero-copy h1>span{display:inline}.hero-lead{max-width:100%}}
+.fv-dots{display:none!important}

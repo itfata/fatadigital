@@ -986,3 +986,11 @@ h2{font-weight:600;letter-spacing:-.045em}
 @media(max-width:800px){.contact-direct a{grid-template-columns:100px 1fr auto;padding:18px 0}}
 
 .founder-text .f-left h2{text-wrap:balance}
+
+/* compact cookie banner */
+.consent{left:20px;bottom:20px;width:min(580px,calc(100vw - 40px));padding:14px 14px 14px 22px;border-radius:20px;border:1px solid rgba(32,37,34,.12);display:flex;align-items:center;gap:20px;box-shadow:0 14px 44px rgba(0,0,0,.25)}
+.consent p{padding:0;margin:0;font-size:13px;line-height:1.5;flex:1}
+.consent-cookie{display:none}
+.consent-actions{margin:0;gap:8px;flex:none}
+.consent-actions button{flex:none;min-height:40px;padding:8px 18px;border-radius:999px;font-size:12px}
+@media(max-width:560px){.consent{left:10px;right:10px;bottom:10px;width:auto;flex-direction:column;align-items:stretch;gap:12px;padding:16px}.consent-actions button{flex:1}}

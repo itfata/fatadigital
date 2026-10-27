@@ -304,3 +304,18 @@ function lang(){var l=document.documentElement.lang;return (window.FATA_TRANSLAT
 function build(){var d=lang();words=[];els.forEach(function(el){var t=d[el.getAttribute('data-kw')]||el.getAttribute('data-orig')||el.textContent;if(!el.getAttribute('data-orig'))el.setAttribute('data-orig',t);el.setAttribute('aria-label',t);el.textContent='';t.split(' ').forEach(function(w,i,a){var s=document.createElement('span');s.className='w';s.setAttribute('aria-hidden','true');s.textContent=w+(i<a.length-1?' ':'');el.appendChild(s);words.push(s)})});upd()}
 function upd(){var r=sec.getBoundingClientRect(),vh=innerHeight,p=Math.min(1,Math.max(0,-r.top/(r.height-vh)));if(matchMedia('(prefers-reduced-motion:reduce)').matches)p=1;var n=Math.round(Math.min(1,p*1.1)*words.length);words.forEach(function(s,i){s.classList.toggle('on',i<n)});if(btn)btn.classList.toggle('show',p>.9)}
 build();addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);new MutationObserver(build).observe(document.documentElement,{attributes:true,attributeFilter:['lang']})})();
+
+;(function(){
+var rv=document.getElementById('rv');if(!rv)return;
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function run(el){var n=+el.getAttribute('data-count'),p=el.getAttribute('data-pre')||'',s=el.getAttribute('data-suf')||'';
+if(reduce){el.textContent=p+n+s;return}
+var t0=null,d=1400;cancelAnimationFrame(el._r);
+function f(t){if(t0===null)t0=t;var k=Math.min(1,(t-t0)/d),e=1-Math.pow(1-k,3);el.textContent=p+Math.round(n*e)+s;if(k<1)el._r=requestAnimationFrame(f)}
+el.textContent=p+'0'+s;el._r=requestAnimationFrame(f)}
+function check(){var on=rv.querySelector('.rv-slide.is-on strong[data-count]');if(on&&rv._seen&&on._last!==rv._seen){}
+if(on&&rv._seen)run(on)}
+var seen=false;
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;rv._seen=1;check()}})},{threshold:.35}).observe(rv)}else{seen=true;rv._seen=1}
+new MutationObserver(function(ms){ms.forEach(function(m){var t=m.target;if(m.attributeName==='class'&&t.classList.contains('is-on')&&seen){var st=t.querySelector('strong[data-count]');if(st)run(st)}})}).observe(rv,{subtree:true,attributes:true,attributeFilter:['class']});
+})();

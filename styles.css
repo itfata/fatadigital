@@ -984,3 +984,5 @@ h2{font-weight:600;letter-spacing:-.045em}
 .contact .lead-note{font-size:14px;color:#b4bdb5}
 .contact-grid>div:not(.contact-left)>p{font-size:clamp(16px,1.3vw,18px);color:#e6eae3;line-height:1.65}
 @media(max-width:800px){.contact-direct a{grid-template-columns:100px 1fr auto;padding:18px 0}}
+
+.founder-text .f-left h2{text-wrap:balance}

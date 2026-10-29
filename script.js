@@ -331,3 +331,15 @@ var s=d.querySelector('summary');
 if(s)s.addEventListener('click',function(e){e.preventDefault();d.open=true});
 });
 })();
+
+/* Google Ads conversion "Contact": click on Telegram or WhatsApp links */
+(function(){
+document.addEventListener('click',function(e){
+var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;
+if(!a)return;
+var h=a.getAttribute('href')||'';
+if(!/^https?:\/\/(t\.me|wa\.me)\//.test(h))return;
+if(typeof gtag!=='function')return;
+gtag('event','conversion',{'send_to':'AW-18498293585/EfYiCLP8iqodENGe1vRE'});
+},true);
+})();

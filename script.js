@@ -236,7 +236,7 @@
     }
     box.remove();
   });
-  document.body.appendChild(box);
+  setTimeout(() => document.body.appendChild(box), 4000);
 })();
 
 

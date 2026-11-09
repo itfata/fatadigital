@@ -10,8 +10,8 @@
     en: {nav:'Main navigation',language:'Language',viewwork:'View our work',legalnav:'Information and terms',open:'Open menu',close:'Close menu'}
   };
   const metadata = {
-    uk: {home:['Fata Digital — дизайн і розробка сайтів для бізнесу','Створюємо сайти для бізнесу: стратегія, структура, дизайн, розробка та запуск. Перегляньте роботи Fata Digital.'],prices:['Ціни | Fata Digital','Вартість сайтів, брендингу та автоматизації заявок у Fata Digital.']},
-    en: {home:['Fata Digital — Web Design & Development Studio','Websites that make your business clear, compelling and easy to choose. Strategy, design, development and launch by Fata Digital.'],prices:['Pricing | Fata Digital','Explore Fata Digital pricing for websites, brand identity, enquiry automation and CRM integration.']}
+    uk: {home:['Fata Digital — дизайн і розробка сайтів для бізнесу','Створюємо сайти для бізнесу: стратегія, структура, дизайн, розробка та запуск. Перегляньте роботи Fata Digital.'],prices:['Ціни | Fata Digital','Вартість сайтів, брендингу та автоматизації заявок у Fata Digital.'],b2b:["Сайти для виробництва та логістики | Fata Digital", "Сайти для виробничих і логістичних компаній: каталог, заявка на розрахунок, дві мови для партнерів. Роботи: MARE, SafeWay UA, MetalPro."]},
+    en: {home:['Fata Digital — Web Design & Development Studio','Websites that make your business clear, compelling and easy to choose. Strategy, design, development and launch by Fata Digital.'],prices:['Pricing | Fata Digital','Explore Fata Digital pricing for websites, brand identity, enquiry automation and CRM integration.'],b2b:["Websites for Manufacturing & Logistics | Fata Digital", "Websites for manufacturing and logistics companies: catalogue, quote requests, two languages for partners. Work: MARE, SafeWay UA, MetalPro."]}
   };
   function setLanguage(next, persist = true) {
     language = next === 'en' ? 'en' : 'uk';

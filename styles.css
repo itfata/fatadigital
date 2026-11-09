@@ -999,3 +999,18 @@ h2{font-weight:600;letter-spacing:-.045em}
 .hero-price a{color:#a9c8f5;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;margin-left:6px}
 .hero-price a:hover{color:#fff}
 @media(max-width:600px){.hero-price{font-size:13.5px}}
+
+/* Why a website + B2B page */
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0 32px}
+.ig-grid article{border-top:1px solid #bdc4b9;padding-top:24px}
+.ig-grid .index{font-size:12px;font-weight:700;color:#62695f}
+.ig-grid h3{font-size:23px;margin-top:14px}
+.ig-grid p{margin-top:14px;font-size:14px}
+.b2b-formats{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1000px){.ig-grid{grid-template-columns:1fr 1fr;gap:32px 28px}}
+@media(max-width:560px){.ig-grid,.b2b-formats{grid-template-columns:1fr}.ig-grid h3{font-size:21px}}
+.ig-why .audit-cta p{color:var(--cream)!important}
+.ig-grid article{border-top-color:var(--line)}
+.ig-grid .index{color:var(--acc)}
+.ig-grid p{color:var(--dim)}
+.b2b-works .project{display:block!important;margin-top:0!important}

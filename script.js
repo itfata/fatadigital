@@ -7,14 +7,16 @@
   const names = {mare:'MARE',safeway:'SafeWay UA',maison:'Maison',target:'TARGET',metalpro:'MetalPro',athletique:'Athlétique',kuro:'Kuro Katana'};
   const labels = {
     uk: {nav:'Головна навігація',language:'Мова',viewwork:'Переглянути роботи',legalnav:'Інформація та умови',open:'Відкрити меню',close:'Закрити меню'},
+    ro: {nav:'Navigare principală',language:'Limbă',viewwork:'Vezi proiectele',legalnav:'Informații și condiții',open:'Deschide meniul',close:'Închide meniul'},
     en: {nav:'Main navigation',language:'Language',viewwork:'View our work',legalnav:'Information and terms',open:'Open menu',close:'Close menu'}
   };
   const metadata = {
+    ro: {b2b:["Site-uri pentru producție și logistică | Fata Digital","Site-uri pentru companii de producție și logistică: catalog, cereri de ofertă, două limbi pentru parteneri. Proiecte: MARE, SafeWay UA, MetalPro."]},
     uk: {home:['Fata Digital — дизайн і розробка сайтів для бізнесу','Створюємо сайти для бізнесу: стратегія, структура, дизайн, розробка та запуск. Перегляньте роботи Fata Digital.'],prices:['Ціни | Fata Digital','Вартість сайтів, брендингу та автоматизації заявок у Fata Digital.'],b2b:["Сайти для виробництва та логістики | Fata Digital", "Сайти для виробничих і логістичних компаній: каталог, заявка на розрахунок, дві мови для партнерів. Роботи: MARE, SafeWay UA, MetalPro."]},
     en: {home:['Fata Digital — Web Design & Development Studio','Websites that make your business clear, compelling and easy to choose. Strategy, design, development and launch by Fata Digital.'],prices:['Pricing | Fata Digital','Explore Fata Digital pricing for websites, brand identity, enquiry automation and CRM integration.'],b2b:["Websites for Manufacturing & Logistics | Fata Digital", "Websites for manufacturing and logistics companies: catalogue, quote requests, two languages for partners. Work: MARE, SafeWay UA, MetalPro."]}
   };
   function setLanguage(next, persist = true) {
-    language = next === 'en' ? 'en' : 'uk';
+    language = next === 'en' || next === 'ro' ? next : 'uk';
     document.documentElement.lang = language;
     document.querySelectorAll('[data-i18n]').forEach(el => {const text = dictionary[language][el.dataset.i18n]; if(text !== undefined) el.textContent = text;});
     document.querySelectorAll('[data-label]').forEach(el => el.setAttribute('aria-label',labels[language][el.dataset.label]));
@@ -27,7 +29,7 @@
     document.querySelector('meta[name="description"]').content = description;
     document.querySelector('meta[property="og:title"]').content = title;
     document.querySelector('meta[property="og:description"]').content = description;
-    document.querySelector('meta[property="og:locale"]').content = language === 'uk' ? 'uk_UA' : 'en_US';
+    document.querySelector('meta[property="og:locale"]').content = language === 'uk' ? 'uk_UA' : language === 'ro' ? 'ro_RO' : 'en_US';
 
   }
   function setMenu(open, restoreFocus = false) {
@@ -207,6 +209,7 @@
   'use strict';
   const KEY = 'fata_consent';
   const text = {
+    ro: {label:'Acord cookies', body:'Folosim cookies pentru a măsura rezultatele reclamelor. Poți accepta sau refuza.', accept:'Accept', decline:'Refuz'},
     en: {label:'Cookie consent', body:'We use cookies to measure how our ads perform. You can accept or decline.', accept:'Accept', decline:'Decline'},
     uk: {label:'Згода на cookies', body:'Ми використовуємо cookies, щоб вимірювати ефективність реклами. Ви можете погодитися або відмовитися.', accept:'Прийняти', decline:'Відхилити'}
   };
@@ -218,7 +221,7 @@
   box.setAttribute('role', 'dialog');
   box.innerHTML = '<span class="consent-cookie" aria-hidden="true"><svg viewBox="-24 0 88 64" xmlns="http://www.w3.org/2000/svg"><defs><mask id="fata-bite"><rect width="64" height="64" fill="#fff"/><circle cx="10" cy="15" r="9"/><circle cx="19" cy="6" r="7"/><circle cx="4" cy="28" r="6"/></mask></defs><g mask="url(#fata-bite)"><circle cx="32" cy="32" r="30" fill="#d8a25f" stroke="#202522" stroke-width="2"/><ellipse cx="22" cy="26" rx="3.2" ry="2.6" fill="#202522"/><ellipse cx="28" cy="12" rx="3" ry="2.4" fill="#202522"/><ellipse cx="14" cy="40" rx="3.4" ry="2.7" fill="#202522"/><ellipse cx="27" cy="46" rx="2.8" ry="2.3" fill="#202522"/><ellipse cx="22" cy="57" rx="3" ry="2.5" fill="#202522"/></g><g fill="#d8a25f" stroke="#202522" stroke-width="1"><circle cx="-3" cy="22" r="2.4"/><circle cx="-9" cy="34" r="1.8"/><circle cx="-14" cy="16" r="1.5"/><circle cx="-6" cy="46" r="2.2"/><circle cx="-13" cy="56" r="1.6"/><circle cx="-1" cy="61" r="1.4"/></g></svg></span><p></p><div class="consent-actions"><button type="button" data-consent="denied"></button><button type="button" data-consent="granted"></button></div>';
   const paint = () => {
-    const t = text[document.documentElement.lang === 'uk' ? 'uk' : 'en'];
+    const t = text[document.documentElement.lang] || text.en;
     box.setAttribute('aria-label', t.label);
     box.querySelector('p').textContent = t.body;
     box.querySelector('[data-consent="denied"]').textContent = t.decline;

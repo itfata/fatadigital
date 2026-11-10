@@ -1031,3 +1031,8 @@ h2{font-weight:600;letter-spacing:-.045em}
  .consent-actions button{flex:none;min-height:34px;padding:6px 14px;font-size:12px}
 }
 @media(min-width:801px){.terms .terms-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* Case study */
+.case-grid{grid-template-columns:repeat(3,1fr)}
+.case-study .section-heading>p{color:var(--dim)}
+@media(max-width:1000px){.case-grid{grid-template-columns:1fr}}

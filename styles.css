@@ -702,7 +702,7 @@ a{color:inherit}
 .project-image{border-radius:28px;background:linear-gradient(145deg,#27402f,#161a18)!important;padding:34px 30px}
 .project-kuro .project-image{background:linear-gradient(145deg,#4a2a2a,#171212)!important}
 .project-maison .project-image{background:linear-gradient(145deg,#2c2a4a,#14131f)!important}
-.project-grauhorn .project-image{background:linear-gradient(145deg,#3a3d40,#16181a)!important}
+.project-grauhorn .project-image{background:linear-gradient(145deg,#3a3d40,#16181a)!important} .project-linea .project-image{background:linear-gradient(145deg,#5b4a41,#1c1613)!important} @media(min-width:561px){.project-linea{grid-column:1/-1;justify-self:center;width:48%}}
 .project-image img{border-radius:10px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
 .project-browser{border-radius:10px 10px 0 0}
 .project-open{background:var(--acc)!important;color:#0f1a24}

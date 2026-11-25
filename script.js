@@ -4,7 +4,7 @@
   const nav = document.querySelector('#navigation');
   const toggle = document.querySelector('.menu-toggle');
   let language = 'uk';
-  const names = {mare:'MARE',safeway:'SafeWay UA',maison:'Maison',grauhorn:'Grauhorn',metalpro:'MetalPro',athletique:'Athlétique',kuro:'Kuro Katana'};
+  const names = {mare:'MARE',safeway:'SafeWay UA',maison:'Maison',grauhorn:'Grauhorn',linea:'Linea',metalpro:'MetalPro',athletique:'Athlétique',kuro:'Kuro Katana'};
   const labels = {
     uk: {nav:'Головна навігація',language:'Мова',viewwork:'Переглянути роботи',legalnav:'Інформація та умови',open:'Відкрити меню',close:'Закрити меню'},
     ro: {nav:'Navigare principală',language:'Limbă',viewwork:'Vezi proiectele',legalnav:'Informații și condiții',open:'Deschide meniul',close:'Închide meniul'},

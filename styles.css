@@ -66,11 +66,11 @@ a:focus-visible,button:focus-visible{outline:3px solid #2571be;outline-offset:6p
 .project-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:5%;row-gap:56px;align-items:start}
 .project-safeway{margin-top:150px}
 .project-maison{max-width:100%}
-.project-target{margin-top:100px}
+.project-grauhorn{margin-top:100px}
 .project-image{display:block;position:relative;padding:28px 24px;background:#dddfd6;overflow:hidden}
 .project-safeway .project-image{background:#dce7ed}
 .project-maison .project-image{background:#d5d4e1}
-.project-target .project-image{background:#d9dedf}
+.project-grauhorn .project-image{background:#d9dedf}
 .project-image img{aspect-ratio:1.44;object-fit:cover;transition:transform .45s}
 .project-browser{height:19px;background:#f3f4f1;display:flex;align-items:center;padding:0 8px;gap:3px}
 .project-browser i{width:3px;height:3px;background:#a6aaa3;border-radius:50%}
@@ -240,8 +240,8 @@ h2{font-size:38px}
 .project-meta h3{font-size:25px}
 .project-service{font-size:11px;margin:8px 0 0}
 .project-description{font-size:14px;line-height:1.65;margin-top:10px}
-.project-maison,.project-target{width:100%}
-.project-target{margin-left:auto}
+.project-maison,.project-grauhorn{width:100%}
+.project-grauhorn{margin-left:auto}
 .studio-intro{gap:24px}
 .large-copy,.studio .large-copy{font-size:16px}
 .values{grid-template-columns:1fr;gap:27px;margin-top:40px}
@@ -478,7 +478,7 @@ summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vi
 
 .project-safeway,.project-metalpro{display:none}
 
-.project-mare{display:none}.project-target{margin-top:0}
+.project-mare{display:none}.project-grauhorn{margin-top:0}
 
 /* reviews: one centered quote + client logo */
 .reviews{background:#e9ece5;overflow:visible}
@@ -702,7 +702,7 @@ a{color:inherit}
 .project-image{border-radius:28px;background:linear-gradient(145deg,#27402f,#161a18)!important;padding:34px 30px}
 .project-kuro .project-image{background:linear-gradient(145deg,#4a2a2a,#171212)!important}
 .project-maison .project-image{background:linear-gradient(145deg,#2c2a4a,#14131f)!important}
-.project-target .project-image{background:linear-gradient(145deg,#1f3f4a,#101a1d)!important}
+.project-grauhorn .project-image{background:linear-gradient(145deg,#3a3d40,#16181a)!important}
 .project-image img{border-radius:10px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
 .project-browser{border-radius:10px 10px 0 0}
 .project-open{background:var(--acc)!important;color:#0f1a24}

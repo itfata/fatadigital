@@ -4,7 +4,7 @@
   const nav = document.querySelector('#navigation');
   const toggle = document.querySelector('.menu-toggle');
   let language = 'uk';
-  const names = {mare:'MARE',safeway:'SafeWay UA',maison:'Maison',target:'TARGET',metalpro:'MetalPro',athletique:'Athlétique',kuro:'Kuro Katana'};
+  const names = {mare:'MARE',safeway:'SafeWay UA',maison:'Maison',grauhorn:'Grauhorn',metalpro:'MetalPro',athletique:'Athlétique',kuro:'Kuro Katana'};
   const labels = {
     uk: {nav:'Головна навігація',language:'Мова',viewwork:'Переглянути роботи',legalnav:'Інформація та умови',open:'Відкрити меню',close:'Закрити меню'},
     ro: {nav:'Navigare principală',language:'Limbă',viewwork:'Vezi proiectele',legalnav:'Informații și condiții',open:'Deschide meniul',close:'Închide meniul'},
@@ -291,7 +291,7 @@ draw()})();
 
 (function(){var sec=document.querySelector('.feature-scroll');if(!sec)return;var st=sec.querySelector('.fv-stack');if(!st)return;
 var imgs=[].slice.call(st.querySelectorAll('img')),dots=[].slice.call(sec.querySelectorAll('#fv-dots i')),url=document.getElementById('fv-url'),c1=document.getElementById('fv-c1'),c2=document.getElementById('fv-c2'),steps=[].slice.call(sec.querySelectorAll('.fc-step'));
-var names=['kuro-katana','maison','athletique','target'],cur=-1,stp=-1;
+var names=['kuro-katana','maison','athletique','grauhorn'],cur=-1,stp=-1;
 function L(){return (document.documentElement.lang||'en').slice(0,2)}
 var T={en:['New enquiry via Telegram','Quote request · 2 min ago'],uk:['Нова заявка в Telegram','Запит розрахунку · 2 хв тому']};
 function txt(){var t=T[L()]||T.en;c1.querySelector('span').textContent=t[0];c2.querySelector('span').textContent=t[1]}
